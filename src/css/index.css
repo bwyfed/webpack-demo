@@ -1,0 +1,16 @@
+body {
+    background-color: red;
+    color: white;
+}
+#avatar {
+    background-image: url(../images/avatar.jpg);
+    width: 1200px;
+    height: 1200px;
+    transform: rotate(45deg);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.25);
+}
+
+#aaaa {
+    background-color: red;
+    color: white;
+}
