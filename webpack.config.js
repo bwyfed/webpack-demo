@@ -6,8 +6,16 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const PurifyCSSPlugin = require('purifycss-webpack')
 const entry = require('./webpack_config/entry_webpack.js')
 
-const website = {
-  publicPath: 'http://127.0.0.1:1717/'
+console.log(encodeURIComponent(process.env.type))
+let website
+if (process.env.type==='build') {
+  website = {
+    publicPath: 'http://jspang.com:1717/'
+  }
+} else {
+  website = {
+    publicPath: 'http://127.0.0.1:1717/'
+  }
 }
 
 module.exports = {
