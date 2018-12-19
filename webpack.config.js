@@ -106,6 +106,7 @@ module.exports = {
 				to: './public'
 			}
 		])
+		// new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),

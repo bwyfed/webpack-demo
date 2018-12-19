@@ -8,3 +8,6 @@ import jspang from './jspang.js'
 }
 $('#title').html('Hello ChunGold')
 jspang()
+
+var json = require('../config.json')
+document.getElementById("json").innerHTML = json.name + ",website:" + json.website
