@@ -6,5 +6,5 @@ import jspang from './jspang.js'
   let jspangString = 'Hello JSPang!'
   document.getElementById("title").innerHTML=jspangString
 }
-
+$('#title').html('Hello ChunGold')
 jspang()

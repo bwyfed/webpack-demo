@@ -1,5 +1,5 @@
 function jspang() {
-  alert('jspang.com:' + 'webpack')
+  console.log('jspang.com:' + 'webpack')
 }
 
 module.exports=jspang
