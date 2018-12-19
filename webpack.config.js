@@ -5,7 +5,7 @@ const htmlPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const PurifyCSSPlugin = require('purifycss-webpack')
 const entry = require('./webpack_config/entry_webpack.js')
-
+// 区分开发环境和生产环境
 console.log(encodeURIComponent(process.env.type))
 let website
 if (process.env.type==='build') {
