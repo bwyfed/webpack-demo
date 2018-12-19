@@ -6,6 +6,7 @@ const htmlPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const PurifyCSSPlugin = require('purifycss-webpack')
 const entry = require('./webpack_config/entry_webpack.js')
+const copyWebpackPlugin = require('copy-webpack-plugin')
 // 区分开发环境和生产环境
 console.log(encodeURIComponent(process.env.type))
 let website
@@ -98,7 +99,13 @@ module.exports = {
     new PurifyCSSPlugin({
       paths: glob.sync(path.join(__dirname, 'src/*.html'))
     }),
-		new webpack.BannerPlugin('JSPang版权所有，看官方免费视频到jspang.com')
+		new webpack.BannerPlugin('JSPang版权所有，看官方免费视频到jspang.com'),
+		new copyWebpackPlugin([
+			{
+				from: __dirname + '/src/public',
+				to: './public'
+			}
+		])
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
