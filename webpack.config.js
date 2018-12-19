@@ -1,5 +1,6 @@
 const path = require('path')
 const glob = require('glob')
+const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const htmlPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -93,12 +94,18 @@ module.exports = {
     new ExtractTextPlugin('css/index.css'),
     new PurifyCSSPlugin({
       paths: glob.sync(path.join(__dirname, 'src/*.html'))
-    })
+    }),
+		new webpack.BannerPlugin('JSPang版权所有，看官方免费视频到jspang.com')
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     host: '127.0.0.1',
     compress: true,
     port: 1717
-  }
+  },
+	watchOptions: {
+  	poll: 1000, // 检测修改的时间，单位是ms
+		aggregateTimeout: 500, // 重复按键时，不进行打包，只算一次
+		ignored: /node_modules/ // 监控忽略的文件或目录
+	}
 }

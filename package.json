@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env type=dev webpack",
+    "dev": "cross-env type=dev webpack --watch",
     "build": "cross-env type=build webpack",
     "server": "webpack-dev-server --open"
   },
