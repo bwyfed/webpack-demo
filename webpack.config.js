@@ -22,7 +22,11 @@ if (process.env.type==='build') {
 
 module.exports = {
   devtool: 'source-map',
-  entry: entry.path,
+  // entry: entry.path,
+  entry: {
+  	entry: './src/entry.js',
+		jquery: 'jquery'
+	},
   output: {
     path: path.resolve(__dirname,'dist'),
     filename: '[name].js',
@@ -84,6 +88,11 @@ module.exports = {
     ]
   },
   plugins:[
+  	new webpack.optimize.CommonsChunkPlugin({
+			name: 'jquery', // 对应entry中的配置key
+			filename: 'assets/js/jquery.js', // 抽离到哪里
+			minChunks: 2 // 最少要抽离几个文件
+		}),
     // new UglifyJsPlugin(),
 		new webpack.ProvidePlugin({
 			$: 'jquery'

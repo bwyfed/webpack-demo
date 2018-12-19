@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env type=dev webpack --watch",
-    "build": "cross-env type=build webpack",
-    "server": "webpack-dev-server --open"
+    "dev": "cross-env type=dev webpack --watch --mode development",
+    "build": "cross-env type=build webpack --mode production",
+    "server": "webpack-dev-server --open --mode development"
   },
   "author": "bwy",
   "license": "ISC",
