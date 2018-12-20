@@ -88,11 +88,11 @@ module.exports = {
     ]
   },
   plugins:[
-  	new webpack.optimize.CommonsChunkPlugin({
-			name: 'jquery', // 对应entry中的配置key
-			filename: 'assets/js/jquery.js', // 抽离到哪里
-			minChunks: 2 // 最少要抽离几个文件
-		}),
+		// new webpack.optimize.CommonsChunkPlugin({
+		// 	name: 'jquery', // 对应entry中的配置key
+		// 	filename: 'assets/js/jquery.js', // 抽离到哪里
+		// 	minChunks: 2 // 最少要抽离几个文件
+		// }),
     // new UglifyJsPlugin(),
 		new webpack.ProvidePlugin({
 			$: 'jquery'
@@ -127,5 +127,11 @@ module.exports = {
   	poll: 1000, // 检测修改的时间，单位是ms
 		aggregateTimeout: 500, // 重复按键时，不进行打包，只算一次
 		ignored: /node_modules/ // 监控忽略的文件或目录
+	},
+	optimization: {
+  	splitChunks: {
+  		chunks: "all",
+			// name: true
+		}
 	}
 }
