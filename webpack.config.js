@@ -21,11 +21,12 @@ if (process.env.type==='build') {
 }
 
 module.exports = {
-  devtool: 'source-map',
+  // devtool: 'source-map',
   // entry: entry.path,
   entry: {
-  	entry: './src/entry.js',
-		jquery: 'jquery'
+  	entry: './src/entry.js'
+		// jquery: 'jquery', // 这样设置入口是不对的，找不到对应的模块
+		// vue: 'vue'
 	},
   output: {
     path: path.resolve(__dirname,'dist'),
@@ -88,14 +89,16 @@ module.exports = {
     ]
   },
   plugins:[
+  	// CommonsChunkPlugin 在 webpack4 中已经废弃了
 		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: 'jquery', // 对应entry中的配置key
-		// 	filename: 'assets/js/jquery.js', // 抽离到哪里
-		// 	minChunks: 2 // 最少要抽离几个文件
+		// 	name: ['jquery', 'vue'], // 对应entry中的配置key，意思是将入口jquery单独抽离
+		// 	filename: 'assets/js/[name].[ext]', // 表示抽离到哪里
+		// 	minChunks: 2 // 最少要抽离几个文件，一般是抽离2个文件
 		// }),
     // new UglifyJsPlugin(),
 		new webpack.ProvidePlugin({
-			$: 'jquery'
+			$: 'jquery',
+			Vue: ['vue/dist/vue.esm.js', 'default']
 		}),
     new htmlPlugin({
       minify: {
@@ -130,8 +133,8 @@ module.exports = {
 	},
 	optimization: {
   	splitChunks: {
-  		chunks: "all",
-			// name: true
+  		// all 将所有的导入包抽离出来形成vendors~entry.js(如使用Provide引入的jquery和vue)
+  		chunks: "all" // 默认值 async ，只抽离异步导入模块，此时只有一个entry.js产生，包含所有的被引入的模块
 		}
 	}
 }

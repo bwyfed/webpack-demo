@@ -1,3 +1,4 @@
+// import 'vue'
 function jspang() {
   console.log('jspang.com:' + 'webpack')
 }
